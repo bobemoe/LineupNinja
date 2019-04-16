@@ -1,0 +1,5 @@
+/data.json
+/data.srlz
+/data_archive/*
+!/data_archive/readme.txt
+config.php

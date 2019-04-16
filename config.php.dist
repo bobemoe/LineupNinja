@@ -1,0 +1,7 @@
+<?php
+$ln_config=[
+  'api_url'=>'https://username:password@api.lineup.ninja/json/your_publication_url',
+  'post_parent'=>1, 
+  'url_prefix'=>'/lineup',
+  'archive'=>true,
+];
