@@ -38,7 +38,7 @@ This will give you a good overview index page to allow browsing of your sessions
 ## Index and Session Virtual Pages
 Assuming you kept "/lineup" as your URL prefix in config, the following virtual pages will now be available on your site.
 
-These pages are Virtual, because they are not editable in wordpress admin. The content is pulled from LN and the style/layout is defined in the code of the module. 
+These pages are "virtual", because they are not editable in wordpress admin. The content is pulled from LN and the style/layout is defined in the code of the module. 
 
 * YOURDOMAIN.COM/lineup/location/NAME this will list (index) all the sessions in the `location` NAME. This is equivalent to the shortcode `[LineupNinja type=sessions location=NAME]` see below
 * YOURDOMAIN.COM/lineup/label/NAME this will list (index) all the sessions in the `label` NAME. this is equivalent to the shortcode `[LineupNinja type=sessions label=NAME]` see below
