@@ -13,7 +13,7 @@ It will also provide a new shortcode allow embedding of `location`, `label`, `se
 ## Configure Lineup Ninja
 In the LineupNinja admin area, go to "Publish" and create a new "json" publication. This will give you an API URL, and optional username and password. You need to enter these into the wordpress plugin settings (see below)
 
-If you want your wordpress site to update each time the "Publish" button is clicked in LN, then enter the following URL into the callback field: `https://YOURDOMAIN.COM/wp-content/plugins/lineupninja/publish.php` If you leave this out you will have to manually visit the URL each time you want your site to update (you will still need to click Publish in LN too)
+If you want your wordpress site to update each time the "Publish" button is clicked for this publication in LN, then enter the following URL into the callback field: `https://YOURDOMAIN.COM/wp-content/plugins/lineupninja/publish.php` If you leave this out you will have to manually visit the URL (or trigger publish.php from the command line) each time you want your site to update (you will still need to click Publish FIRST in LN too)
 
 ## Settings
 * api_url : the URL from LineupNinja that was given to you when you published your lineup, including your username/password if you set one in your publishing settings. It should look something like `https://username:password@api.lineup.ninja/json/your_publication_url`
@@ -40,14 +40,14 @@ Assuming you kept "/lineup" as your URL prefix in config, the following virtual 
 
 These pages are Virtual, because they are not editable in wordpress admin. The content is pulled from LN and the style/layout is defined in the code of the module. 
 
-* yourdomain.com/lineup/location/NAME this will list (index) all the sessions in the `location` NAME. This is equivalent to the shortcode `[LineupNinja type=sessions location=NAME]` see below
-* yourdomain.com/lineup/label/NAME this will list (index) all the sessions in the `label` NAME. this is equivalent to the shortcode `[LineupNinja type=sessions label=NAME]` see below
-* yourdomain.com/lineup/session/UUID this will display the session (and contributor) details for session UUID.
+* YOURDOMAIN.COM/lineup/location/NAME this will list (index) all the sessions in the `location` NAME. This is equivalent to the shortcode `[LineupNinja type=sessions location=NAME]` see below
+* YOURDOMAIN.COM/lineup/label/NAME this will list (index) all the sessions in the `label` NAME. this is equivalent to the shortcode `[LineupNinja type=sessions label=NAME]` see below
+* YOURDOMAIN.COM/lineup/session/UUID this will display the session (and contributor) details for the session identified by UUID.
 
 ## Shortcodes
 * `[LineupNinja type=labels]` lists all your labels, linking of the the Label Index page (/lineup/label/NAME)
 * `[LineupNinja type=locations]` lists all your locations, linking off to the Location Index page (/lineup/location/NAME)
-* `[LineupNinja type=sessions]` lists all your sessions (see optional filters below)
+* `[LineupNinja type=sessions order=az|time]` lists all your sessions. by default they are ordered alphabetically, use `order=time` to order chronologically. (see additional optional filters below)
 * `[LineupNinja type=contributors]` lists all your contributors (see optional filters below)
 
 The `sessions` and `contributors` shortcode have optional parameter to filter on label and/or location. Just add the `labels="X"` or `locations="X"` to the shortcode where X matches the name of a location or label in LN. Comma separated lists are allowed. e.g: `[LineupNinja type=sessions labels=music locations="main stage,acoustic stage"]` Don't forget to add the quotes (") if you have spaces in your names.
