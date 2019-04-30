@@ -1,8 +1,10 @@
 <?php
 $config=require(__DIR__.'/config.php');
 
+$id=intval($_GET['id']);
+
 $ch = curl_init();
-curl_setopt ($ch, CURLOPT_URL, $config['api_url']);
+curl_setopt ($ch, CURLOPT_URL, $config['feeds'][$id]['api_url']);
 curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, 5);
 $json = curl_exec($ch);
@@ -15,9 +17,9 @@ if(curl_errno($ch)){
 		$res=['result'=>'api_error','reason'=>$data->error];
 	}elseif(isset($data->contributors)){
 		$srlz=serialize(preprocess($data));
-		file_put_contents('data.srlz',$srlz);
+		file_put_contents('data'.$id.'.srlz',$srlz);
 		if($config['archive']){
-			file_put_contents('data_archive/'.time().'.srlz',$srlz);
+			file_put_contents('data_archive/'.$id.'-'.time().'.srlz',$srlz);
 		}
 		$res=['result'=>'success'];
 	}else{

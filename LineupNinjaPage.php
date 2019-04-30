@@ -1,10 +1,10 @@
 <?
 abstract class LineupNinjaPage extends RoutedPage{
-  protected $ln=null;
+  protected $lnd=null;
 
-  function __construct($ln){
+  function __construct($lnd){
     parent::__construct();
-    $this->ln=$ln;
+    $this->lnd=$lnd;
   }
 
   public function getFooter($data){

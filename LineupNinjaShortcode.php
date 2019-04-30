@@ -5,7 +5,7 @@ class LineupNinjaShortcode{
 
   /* constructor; register the shortcode */
   public function __construct($lnd){
-    add_shortcode( 'LineupNinja', [$this, 'callback'] );
+    add_shortcode( $lnd->getConfig('shortcode'), [$this, 'callback'] );
     $this->lnd=$lnd;
   }
 
@@ -107,7 +107,7 @@ class LineupNinjaShortcode{
     $items=[];
     $sort=[];
     foreach($this->getData()->labels as $item){
-      $items[]='<a href="'.$this->lnd->getConfig('url_prefix').'/label/'.urlencode($item->name).'">'.$item->name.'</a>';
+      $items[]='<a href="/'.$this->lnd->getConfig('url_prefix').'/label/'.urlencode($item->name).'">'.$item->name.'</a>';
       $sort[]=$item->name;
     }
     array_multisort($sort,SORT_ASC,$items);
@@ -118,7 +118,7 @@ class LineupNinjaShortcode{
     $items=[];
     $sort=[];
     foreach($this->getData()->locations as $item){
-      $items[]='<a href="'.$this->lnd->getConfig('url_prefix').'/location/'.urlencode($item->name).'">'.$item->name.'</a>';
+      $items[]='<a href="/'.$this->lnd->getConfig('url_prefix').'/location/'.urlencode($item->name).'">'.$item->name.'</a>';
       $sort[]=$item->name;
     }
     array_multisort($sort,SORT_ASC,$items);
@@ -189,7 +189,7 @@ class LineupNinjaShortcode{
       }else{
         $location=null;
       }
-      $html.='<li><strong><a href="'.$this->lnd->getConfig('url_prefix').'/session/'.$session->id.'/">'.$session->name.'</a></strong> ';
+      $html.='<li><strong><a href="/'.$this->lnd->getConfig('url_prefix').'/session/'.$session->id.'/">'.$session->name.'</a></strong> ';
       $html.= implode(', ',array_filter([$contribs,$location]));
       $html.='</li>';
     }

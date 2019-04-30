@@ -1,7 +1,21 @@
 <?php
-$ln_config=[
-  'api_url'=>'https://username:password@api.lineup.ninja/json/your_publication_url',
-  'post_parent'=>1, 
-  'url_prefix'=>'/lineup',
+$config=[
   'archive'=>true,
 ];
+
+$config['feeds'][2019]=[
+  'api_url'=>'https://username:password@api.lineup.ninja/json/your_publication_url',
+  'post_parent'=>1, 
+  'url_prefix'=>'lineup',
+  'shortcode'=>'LineupNinja',
+];
+
+## add more feeds if you like, be sure to use a differnt url_prefix and shortcode
+#$config['feeds'][2018]=[
+#  'api_url'=>'https://username:password@api.lineup.ninja/json/your_other_publication_url',
+#  'post_parent'=>1, 
+#  'url_prefix'=>'lineup-2018',
+#  'shortcode'=>'LineupNinja2018',
+#];
+
+return $config;

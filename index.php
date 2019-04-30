@@ -20,13 +20,15 @@ require_once('LabelPage.php');
 
 $config=require('config.php');
 
-//load the LN data, put into data.srlz by publish.php 
-$lnd=new LineupNinjaData(__DIR__.'/data.srlz', $config);
+$o=[];
 
-//initilize the shortcode
-$lns=new LineupNinjaShortcode($lnd);
-
-//initilize the pages
-$sp=new SessionPage($lnd);
-$lp=new LocationPage($lnd);
-$lp=new LabelPage($lnd);
+foreach($config['feeds'] as $id=>$feed){
+  //load the data
+  $lnd=new LineupNinjaData(__DIR__.'/data'.$id.'.srlz', $feed);
+  //initilize the shortcode
+  new LineupNinjaShortcode($lnd);
+  //initilize the pages
+  new SessionPage($lnd);
+  new LocationPage($lnd);
+  new LabelPage($lnd);
+}

@@ -1,15 +1,20 @@
 <?
 class SessionPage extends LineupNinjaPage{
-  protected $route_regexp='#(^|/)session/(.*)/?#';
+  protected $route_regexp;
+
+  function __construct($lnd){
+    $this->route_regexp='#'.$lnd->getConfig('url_prefix').'/session/(.*)/?#';
+    parent::__construct($lnd);
+  }
 
   function setupPost($post,$matches){
-    $data=$this->ln->getData();
-    $session=$data->sessions[$matches[2]];
+    $data=$this->lnd->getData();
+    $session=$data->sessions[$matches[1]];
 
     $post->post_title = $session->name;
     $post->post_content = $this->getContent($session,$data);
 
-    $post->post_parent=$this->ln->getConfig('post_parent'); 
+    $post->post_parent=$this->lnd->getConfig('post_parent'); 
 
     return($post);
   }
@@ -37,11 +42,11 @@ class SessionPage extends LineupNinjaPage{
       }else{
         $labels.=' , ';
       }
-      $labels .= '<a href="'.$this->ln->getConfig('url_prefix').'/label/'.urlencode($data->labels[$id]->name).'">' . $data->labels[$id]->name . '</a>';
+      $labels .= '<a href="'.$this->lnd->getConfig('url_prefix').'/label/'.urlencode($data->labels[$id]->name).'">' . $data->labels[$id]->name . '</a>';
     }
     $info[]=$labels;
     if($session->location){
-      $info[]='<b>Location:</b> <a href="'.$this->ln->getConfig('url_prefix').'/location/'.urlencode($data->locations[$session->location]->name).'">'.$data->locations[$session->location]->name.'</a>';
+      $info[]='<b>Location:</b> <a href="'.$this->lnd->getConfig('url_prefix').'/location/'.urlencode($data->locations[$session->location]->name).'">'.$data->locations[$session->location]->name.'</a>';
     }
     $html='';
     if($contribs) $html.="<h3>$contribs</h3>";
