@@ -6,7 +6,7 @@ Plugin URI: https://github.com/bobemoe/LineupNinja
 Author: jhodges
 Author URI: http://jhodges.co.uk
 Description: Simple plugin to oputput LineupNinja data onto wordpress site.
-Version: 1.0
+Version: 1.1.0
 */
 
 require_once('LineupNinjaData.php');

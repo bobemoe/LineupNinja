@@ -12,10 +12,13 @@ It will also provide a new shortcode allow embedding of `location`, `label`, `se
 
 ## Configure the WP Plugin.
 Global:
+
 * archive : `true` to enable keeping archive copies of the published data (useful for debugging/rolling back). `false` will only keep the current published version.
+
 Feeds:
-Define as many feeds as you like (e.g. different events or years)
-Note each feed must have and numerical ID (2018 and 2019 in the settings example)
+
+Define as many feeds as you like (e.g. different events or years). Note each feed must have and numerical ID (2018 and 2019 in the settings example)
+
 * api_url : the URL from LineupNinja that was given to you when you published your lineup, including your username/password if you set one in your publishing settings. It should look something like `https://username:password@api.lineup.ninja/json/your_publication_url`
 * post_parent : the wordpress post ID that you'd like to be the parent of all session and lineup index pages. This will be used for breadcrumb links etc. 
 * url_prefix : to keep the virtual pages all in one place and avoid naming conflicts with your real pages, choose a URL prefix here. Recommended to use "/lineup".
@@ -61,7 +64,9 @@ The `sessions` and `contributors` shortcode have optional parameter to filter on
 
 ## Change Log
 v1.0.0
-*Initial release.
+
+* Initial release.
 
 V1.1.0
-*Added support for multiple feeds. config.php not compatable with v1.0.0
+
+* Added support for multiple feeds. config.php not compatable with v1.0.0
